@@ -10,6 +10,10 @@ run = True
 ai = [Pedestrian()]
 
 while run:
+    
+    if bool(randint(0, 1)) and len(ai) < 3:
+        ai.append(Pedestrian())
+
     Screen.load()
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
