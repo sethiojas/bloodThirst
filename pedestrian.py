@@ -13,7 +13,5 @@ class Pedestrian:
         self._pedestrian_position_x += self._position_change
         Screen.screen.blit(self._PEDESTRIAN_IMAGE, (self._pedestrian_position_x, self._pedestrian_position_y))
 
-    def is_close_to_vampire(self):
-        if self._pedestrian_position_x - Vampire.get_x() < 40:
-            return True
-        return False
+    def get_x(self):
+        return self._pedestrian_position_x
