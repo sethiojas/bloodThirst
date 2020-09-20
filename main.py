@@ -1,4 +1,5 @@
 import pygame
+from random import randint
 from screen import Screen
 from vampire import Vampire
 from pedestrian import Pedestrian
@@ -15,6 +16,9 @@ while run:
         ai.append(Pedestrian())
 
     Screen.load()
+    
+    deletion_list = []
+
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             run = False
@@ -24,19 +28,25 @@ while run:
             elif event.key == pygame.K_LEFT:
                 Vampire.change_pos('left')
             elif event.key == pygame.K_SPACE:
-                for i in range(len(ai)):
-                    if Vampire.is_close_to_vampire(ai[i]):
-                        ai.pop(i)
+                for bot in ai:
+                    if Vampire.is_close_to_vampire(bot):
+                        deletion_list.append(bot)
+                        
 
         elif event.type == pygame.KEYUP:
             if (event.key == pygame.K_RIGHT or
             event.key == pygame.K_LEFT):
                 Vampire.change_pos('stop')
 
-    for i in range(len(ai)):
-        out_of_window = ai[i].move()
+    
+    for bot in ai:
+        out_of_window = bot.move()
         if out_of_window:
-            ai.pop(i)
+            deletion_list.append(bot)
 
     Vampire.display()
     pygame.display.update()
+
+    if deletion_list:
+        for item in deletion_list:
+            ai.remove(item)
