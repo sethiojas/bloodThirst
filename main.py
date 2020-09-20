@@ -19,6 +19,11 @@ while run:
                 Vampire.change_pos('right')
             elif event.key == pygame.K_LEFT:
                 Vampire.change_pos('left')
+            elif event.key == pygame.K_SPACE:
+                for i in range(len(ai)):
+                    if ai[i].is_close_to_vampire():
+                        ai.pop(i)
+
         elif event.type == pygame.KEYUP:
             if (event.key == pygame.K_RIGHT or
             event.key == pygame.K_LEFT):
