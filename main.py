@@ -1,8 +1,8 @@
 import pygame
 
 pygame.init()
-
-screen = pygame.display.set_mode((800, 600))
+window = (800, 600)
+screen = pygame.display.set_mode(window)
 pygame.display.set_caption('Blood Thirst')
 
 night_sky_color_rgb = (11, 16, 38)
@@ -16,6 +16,8 @@ vampire_speed = 0.4
 
 def move_vampire(x):
     # 520 is the y coordinate of vampire which is constant
+    x = 0 if x < 0 else x
+    x = window[0] - 64 if x > window[0] - 64 else x
     screen.blit(vampire_image, (x, 520))
 
 vampire_x_change = 0
