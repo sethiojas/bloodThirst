@@ -5,7 +5,7 @@ class Vampire:
     _VAMPIRE_IMAGE = pygame.image.load('images/vampire.png')
     _VAMPIRE_SPEED = 0.4
     _vampire_position_x = 10
-    _vampire_position_y = 530
+    _vampire_position_y = 490
     _position_change = 0
 
     @classmethod
@@ -27,4 +27,8 @@ class Vampire:
             cls._position_change = cls._VAMPIRE_SPEED
         elif moving == 'stop':
             cls._position_change = 0
+
+    @classmethod
+    def get_x(cls):
+        return cls._vampire_position_x
 
