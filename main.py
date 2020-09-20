@@ -1,4 +1,5 @@
 import pygame
+from time import time
 from random import randint
 from screen import Screen
 from vampire import Vampire
@@ -12,7 +13,7 @@ ai = [Pedestrian()]
 
 while run:
     
-    if bool(randint(0, 1)) and len(ai) < 3:
+    if int(time()) % 5 == 0 and len(ai) < 3:
         ai.append(Pedestrian())
 
     Screen.load()
