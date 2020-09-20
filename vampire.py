@@ -29,6 +29,8 @@ class Vampire:
             cls._position_change = 0
 
     @classmethod
-    def get_x(cls):
-        return cls._vampire_position_x
+    def is_close_to_vampire(cls, object):
+        if object.get_x() - cls._vampire_position_x <= 40:
+            return True
+        return False
 
