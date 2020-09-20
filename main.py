@@ -29,8 +29,10 @@ while run:
             event.key == pygame.K_LEFT):
                 Vampire.change_pos('stop')
 
-    for bot in ai:
-        bot.move()
-    
+    for i in range(len(ai)):
+        out_of_window = ai[i].move()
+        if out_of_window:
+            ai.pop(i)
+
     Vampire.display()
     pygame.display.update()
