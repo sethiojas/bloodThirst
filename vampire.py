@@ -30,7 +30,7 @@ class Vampire:
 
     @classmethod
     def is_close_to_vampire(cls, object):
-        if object.get_x() - cls._vampire_position_x <= 40:
+        if abs(object.get_x() - cls._vampire_position_x) <= 40:
             return True
         return False
 
