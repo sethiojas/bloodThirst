@@ -4,13 +4,14 @@ from random import randint
 from screen import Screen
 from vampire import Vampire
 from pedestrian import Pedestrian
+from hunter import Hunter
 
 pygame.init()
 
 run = True
 
 ai = [Pedestrian()]
-
+vampire_hunter = Hunter()
 while run:
     
     if int(time()) % 5 == 0 and len(ai) < 3:
@@ -41,13 +42,13 @@ while run:
             event.key == pygame.K_LEFT):
                 Vampire.change_pos('stop')
 
-    
     for bot in ai:
         out_of_window = bot.move()
         if out_of_window:
             deletion_list.append(bot)
-
+   
     Vampire.display()
+    vampire_hunter.move()
     pygame.display.update()
 
     if deletion_list:
