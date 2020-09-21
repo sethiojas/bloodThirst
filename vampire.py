@@ -7,9 +7,14 @@ class Vampire:
     _vampire_position_x = 10
     _vampire_position_y = 490
     _position_change = 0
+    isHidden = False
+    dumpster_hiding_ranges = [(106, 298), (506, 698)]
 
     @classmethod
     def display(cls):
+        if cls.isHidden:
+            return
+
         cls._vampire_position_x = cls._vampire_position_x + cls._position_change
 
         if cls._vampire_position_x < 0:
@@ -33,4 +38,16 @@ class Vampire:
         if abs(object.get_x() - cls._vampire_position_x) <= 40:
             return True
         return False
+
+    @classmethod
+    def hide_if_near_dumpster(cls):
+        if cls.isHidden:
+            cls.isHidden = False
+            return
+
+        for interval in cls.dumpster_hiding_ranges:
+            if (cls._vampire_position_x >= interval[0] and
+                cls._vampire_position_x <= interval[1]):
+                cls.isHidden = True
+                cls._position_change = 0
 
