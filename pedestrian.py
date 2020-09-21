@@ -1,6 +1,5 @@
 import pygame
 from screen import Screen
-from vampire import Vampire
 from random import randint
 
 class Pedestrian:
