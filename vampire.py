@@ -51,3 +51,10 @@ class Vampire:
                 cls.isHidden = True
                 cls._position_change = 0
 
+    @classmethod
+    def get_x(cls):
+        return cls._vampire_position_x
+
+    @classmethod
+    def hidden_status(cls):
+        return cls.isHidden
