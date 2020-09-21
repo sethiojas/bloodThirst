@@ -6,7 +6,7 @@ from random import randint
 class Hunter:
     rand_number = randint(0, 1)
     x_pos = [-64, Screen.window_x()]
-    pos_change = [0.2, -0.2]
+    pos_change = [0.3, -0.3]
     hunter_images = ['hunter_right', 'hunter_left']
     range_images = ['range_right', 'range_left']
     range_offsets = [63, -200]
