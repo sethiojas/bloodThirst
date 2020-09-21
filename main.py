@@ -32,6 +32,8 @@ while run:
                 for bot in ai:
                     if Vampire.is_close_to_vampire(bot):
                         deletion_list.append(bot)
+            elif event.key == pygame.K_LALT:
+                Vampire.hide_if_near_dumpster()
                         
 
         elif event.type == pygame.KEYUP:
